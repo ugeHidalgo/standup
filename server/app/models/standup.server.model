@@ -1,5 +1,5 @@
-var moongoose = require ('mongoose'),
-    Schema = moongoose.Schema,
+var mongoose = require ('mongoose'),
+    Schema = mongoose.Schema,
     standupSchema = new Schema ({
         memberName : String,
         project : String,
@@ -8,3 +8,5 @@ var moongoose = require ('mongoose'),
         impediment : String,
         createdOn : { type : Date, default : Date.now },
     });
+
+    module.exports = mongoose.model ('Standup', standupSchema);
