@@ -1,0 +1,4 @@
+module.exports = {
+    //'url' : 'mongodb://localhost:27017/standupmeetingnotes' //DB on local computer
+    'url' : 'mongodb://demo:demo@ds157964.mlab.com:57964/standupmeetingnotes' //DB on mLab
+}

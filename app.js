@@ -8,6 +8,13 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 
+//Mongoose ODM
+var mongoose = require('mongoose');
+
+//Mongoose connection to mongoDB
+dbConfig = require ('./server/app/data/dbConfig'),
+mongoose.connect(dbConfig.url)
+
 var app = express();
 
 var swig = require("swig");
