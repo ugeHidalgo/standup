@@ -4,7 +4,13 @@ var standupController = require ('../server/app/controllers/standup.server.contr
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  //res.render('index', { title: 'Express' });
+  return standupController.list(req, res);
+});
+
+/* POST used to get notes from a user. */
+router.post('/', function(req, res) {
+  return standupController.filterByMember (req,res);
 });
 
 /* GET new note page. */

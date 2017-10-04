@@ -5,6 +5,35 @@ exports.getNote = function (req, res) {
     res.render ('newnote', { title : 'A new note'})
 };
 
+
+exports.list = function (req, res) {
+    var query = Standup.find ();
+
+    query.sort({ createdOn: 'desc'})
+        .limit(12)
+        .exec( function (err, results) {
+            res.render ('index', { title: 'StandUp - List', notes: results}) 
+        });
+
+};
+
+exports.filterByMember = function (req, res) {
+    var nameFilter = req.body.memberName;
+
+    var query = Standup.find();
+    query.sort ({createdOn: 'desc'})
+        .limit(12);
+
+    if (nameFilter.length > 0){
+        query.where ({ memberName: nameFilter});
+    }
+        
+    query.exec ( function (err, results) {
+        res.render ('index', { title: 'Notes from ' + nameFilter , notes: results});
+    });
+};
+
+
 exports.create = function (req, res) {
 
     var entry = new Standup({
